@@ -18,6 +18,16 @@ class DivorcesController < ApplicationController
     current_user.update(etat_civil_params)
     redirect_to etat_civil_divorce_documents_path(current_user.divorces.first)
   end
+
+  def update_revenue
+    current_user.update(revenue_params)
+    redirect_to revenus_divorce_documents_path(current_user.divorces.first)
+  end
+
+  def update_charge
+    current_user.update(charge_params)
+    redirect_to charges_divorce_documents_path(current_user.divorces.first)
+  end
   # def create
   #   if current_user.divorces.size == 1
   #     redirect_to divorce_path(divorce)
@@ -51,6 +61,14 @@ class DivorcesController < ApplicationController
 
   def etat_civil_params
     params.require(:user).permit(:gender, :child_nb, :status_pro, :bank_account_nb, :credit_nb, :insurance_nb, :vehicle_nb)
+  end
+
+  def revenue_params
+    params.require(:user).permit(:status_pro_conjoint, :property_nb, :status_pro, :bank_account_nb, :credit_nb, :insurance_nb, :vehicle_nb)
+  end
+
+  def charge_params
+    params.require(:user).permit(:credit_nb, :insurance_nb, :vehicle_nb, :property_nb)
   end
 
 end
