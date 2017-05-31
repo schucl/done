@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529164300) do
+ActiveRecord::Schema.define(version: 20170531090711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "divorces", force: :cascade do |t|
+    t.string "separation_type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_divorces_on_user_id"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string "description"
+    t.string "doc_name"
+    t.boolean "uploaded"
+    t.string "category"
+    t.bigint "divorce_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["divorce_id"], name: "index_documents_on_divorce_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,8 +47,18 @@ ActiveRecord::Schema.define(version: 20170529164300) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "gender"
+    t.integer "child_nb"
+    t.integer "property_nb"
+    t.string "status_pro"
+    t.integer "bank_account_nb"
+    t.integer "credit_nb"
+    t.integer "insurance_nb"
+    t.integer "vehicle_nb"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "divorces", "users"
+  add_foreign_key "documents", "divorces"
 end
