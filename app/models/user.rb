@@ -10,7 +10,18 @@ class User < ApplicationRecord
     validates :child_nb, presence: true, acceptance: { accept: [1..15] }
     validates :status_pro, acceptance: { accept: ["Salarié", "Chef d'entreprise", "Sans Emploi", "Libéral"] }
     validates :bank_account_nb, presence: true, acceptance: { accept: [1..10] }
-    validates :email, :property_nb, :status_pro, :credit_nb, :insurance_nb, :vehicle_nb, :first_name, :last_name, :amiable, :contract_type, :statut_pro_conjoint, :mariage_contract, :presence true
+    validates :email, presence: true
+    validates :property_nb, presence: true
+    validates :status_pro, presence: true
+    validates :credit_nb, presence: true
+    validates :insurance_nb, presence: true
+    validates :vehicle_nb, presence: true
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    validates :amiable, presence: true
+    validates :contract_type, presence: true
+    validates :statut_pro_conjoint, presence: true
+    validates :mariage_contract, presence: true
 
 end
 

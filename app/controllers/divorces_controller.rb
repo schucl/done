@@ -20,17 +20,17 @@ class DivorcesController < ApplicationController
 
   def update_etat_civil
     current_user.update(etat_civil_params)
-    redirect_to etat_civil_divorce_documents_path(current_user.divorces.first)
+    redirect_to etat_civil_divorce_documents_path(current_user.divorce)
   end
 
   def update_revenue
     current_user.update(revenue_params)
-    redirect_to revenus_divorce_documents_path(current_user.divorces.first)
+    redirect_to revenus_divorce_documents_path(current_user.divorce)
   end
 
   def update_charge
     current_user.update(charge_params)
-    redirect_to charges_divorce_documents_path(current_user.divorces.first)
+    redirect_to charges_divorce_documents_path(current_user.divorce)
   end
   # def create
   #   if current_user.divorces.size == 1
