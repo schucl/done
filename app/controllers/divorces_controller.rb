@@ -64,15 +64,15 @@ class DivorcesController < ApplicationController
   end
 
   def etat_civil_params
-    params.require(:user).permit(:gender, :child_nb, :status_pro, :bank_account_nb, :credit_nb, :insurance_nb, :vehicle_nb)
+    params.require(:user).permit(:first_name, :last_name, :gender, :child_nb, :mariage_contract, :contract_type)
   end
 
   def revenue_params
-    params.require(:user).permit(:statut_pro_conjoint, :property_nb, :status_pro, :bank_account_nb, :credit_nb, :insurance_nb, :vehicle_nb)
+    params.require(:user).permit(:status_pro, :statut_pro_conjoint, :property_nb, :bank_account_nb, :vehicle_nb)
   end
 
   def charge_params
-    params.require(:user).permit(:credit_nb, :insurance_nb, :vehicle_nb, :property_nb)
+    params.require(:user).permit(:credit_nb, :insurance_nb)
   end
 
 end
