@@ -2,15 +2,30 @@
 
 
 <ul>
+  <!-- passeport exemple -->
   <li>Passport</li>
   <li>Passport conjoint</li>
-  <li>Passport enfant 1 … n</li>
+  <% if current_user.child_nb > 0 %>
+    <% for i in 1..(current_user.child_nb) %>
+      <li>Passeport du <%= i %>er enfant </li>
+    <% end %>
+  <% end %>
+
+  <!-- ID exemple -->
   <li>Carte d’Identite</li>
   <li>Carte d’Identite conjoint</li>
-  <li>Carte d’Identite enfant 1 … n</li>
+  <% if current_user.child_nb > 0 %>
+    <% for i in 1..(current_user.child_nb) %>
+      <li>Carte d'identité du <%= i %>er enfant </li>
+    <% end %>
+  <% end %>
+
+  <!-- acte de naissance exemple -->
   <li>Acte de Naissance</li>
   <li>Acte de Naissance conjoint</li>
+
   <li>Acte de Naissance enfant 1 … n</li>
+
   <li>Livret de Famille </li>
   <li>Acte de Mariage</li>
   <li>Contrat de Mariage </li>
