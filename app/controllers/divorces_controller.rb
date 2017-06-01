@@ -64,7 +64,7 @@ class DivorcesController < ApplicationController
   end
 
   def revenue_params
-    params.require(:user).permit(:status_pro_conjoint, :property_nb, :status_pro, :bank_account_nb, :credit_nb, :insurance_nb, :vehicle_nb)
+    params.require(:user).permit(:statut_pro_conjoint, :property_nb, :status_pro, :bank_account_nb, :credit_nb, :insurance_nb, :vehicle_nb)
   end
 
   def charge_params
