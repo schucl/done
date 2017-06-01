@@ -10,13 +10,12 @@
         <h1>Aller on attaque avec la partie etat civil</h1>
 
         <%= simple_form_for current_user, :url => update_etat_civil_path, :method => :patch do |f| %>
+          <%= f.input :first_name  %>
+          <%= f.input :last_name  %>
           <%= f.input :gender  %>
           <%= f.input :child_nb %>
-          <%= f.input :status_pro  %>
-          <%= f.input :bank_account_nb %>
-          <%= f.input :credit_nb  %>
-          <%= f.input :insurance_nb  %>
-          <%= f.input :vehicle_nb  %>
+          <%= f.input :mariage_contract %>
+          <%= f.input :contract_type %>
           <%= f.submit "Ok" %>
         <% end %>
       </div>

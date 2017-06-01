@@ -23,14 +23,23 @@
   <!-- acte de naissance exemple -->
   <li>Acte de Naissance</li>
   <li>Acte de Naissance conjoint</li>
+  <% if current_user.child_nb > 0 %>
+    <% for i in 1..(current_user.child_nb) %>
+      <li>Carte d'identité du <%= i %>er enfant </li>
+    <% end %>
+  <% end %>
 
-  <li>Acte de Naissance enfant 1 … n</li>
 
+  <!-- acte de naissance exemple -->
   <li>Livret de Famille </li>
   <li>Acte de Mariage</li>
-  <li>Contrat de Mariage </li>
+  <% if current_user.mariage_contract == true %>
+    <li>Contrat de Mariage </li>
+  <% end %>
 </ul>
 
+<%= link_to "Revenir au questionnaire", etat_civil_path %>
+<%= link_to "Poursuivez au questionnaire suivant", revenue_path %>
 
 
 
