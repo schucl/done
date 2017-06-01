@@ -10,6 +10,7 @@ class DocumentsController < ApplicationController
 
   def new
     @document = Document.new
+    @divorce = Divorce.find(params[:divorce_id])
   end
 
   def create
@@ -17,9 +18,15 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
     @document.divorce = @divorce
     if @document.save
+      redirect_to etat_civil_divorce_documents_path(@divorce)
     else
       render :new
     end
+  end
+
+  def etat_civil
+    @document = Document.new
+    @divorce = Divorce.find(params[:divorce_id])
   end
 
   def edit
@@ -39,6 +46,6 @@ class DocumentsController < ApplicationController
   end
 
   def document_params
-    params.require(:documents).permit(:doc_name, :description, :uploaded?, :category)
+    params.require(:document).permit(:doc_name, :description, :uploaded?, :category, :attachment, :attachment_cache)
   end
 end
