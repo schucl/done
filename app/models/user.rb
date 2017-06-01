@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :documents, through: :divorces
-  has_many :divorces
+  has_one :divorce
   # has_many :logements
   #   validates :gender, acceptance: { accept: ["Homme", "Femme"] }
   #   validates :children_number, acceptance: { accept: [1..15] }

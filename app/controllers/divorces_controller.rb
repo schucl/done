@@ -9,9 +9,13 @@ class DivorcesController < ApplicationController
   # end
 
   def new_etat_civil
-    @divorce = Divorce.new
-    @divorce.user = current_user
-    @divorce.save
+    if current_user.divorce.nil?
+      @divorce = Divorce.new
+      @divorce.user = current_user
+      @divorce.save
+    else
+      @divorce = current_user.divorce
+    end
   end
 
   def update_etat_civil
