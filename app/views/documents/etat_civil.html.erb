@@ -42,7 +42,15 @@
 <%= link_to "Revenir au questionnaire", etat_civil_path %>
 <%= link_to "Poursuivez au questionnaire suivant", revenue_path %>
 
-
+<%= simple_form_for([@divorce, @document]) do |f| %>
+  <%= f.input :doc_name %>
+  <%= f.input :description %>
+  <%= f.input :category %>
+  <%= f.input :uploaded %>
+  <%= f.input :attachment %>
+  <%= f.input :attachment_cache, as: :hidden %>
+  <%= f.submit %>
+<% end %>
 
 
 
