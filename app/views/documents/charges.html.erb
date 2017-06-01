@@ -2,8 +2,12 @@
 
 <ul>
   <li>Factures (EDF, eau, tel…) </li>
-  <li>Remboursement Credit</li>
-  <li>Taxes habitation</li>
+
+  <%= if current_user.credit_nb > 0 %>
+    <li>Remboursement Credit</li>
+
+
+  <li>Taxe habitation</li>
   <li>Taxe foncière</li>
   <li>Quittance Loyer</li>
   <li>Certificats scolarité</li>

@@ -7,10 +7,10 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    super
-    etat_civil_path
-  end
+  # def create
+  #   super
+  #   update_etat_civil_path
+  # end
 
   # DELETE /resource/sign_out
   # def destroy
