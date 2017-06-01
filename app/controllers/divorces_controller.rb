@@ -9,24 +9,28 @@ class DivorcesController < ApplicationController
   # end
 
   def new_etat_civil
-    @divorce = Divorce.new
-    @divorce.user = current_user
-    @divorce.save
+    if current_user.divorce.nil?
+      @divorce = Divorce.new
+      @divorce.user = current_user
+      @divorce.save
+    else
+      @divorce = current_user.divorce
+    end
   end
 
   def update_etat_civil
     current_user.update(etat_civil_params)
-    redirect_to etat_civil_divorce_documents_path(current_user.divorces.first)
+    redirect_to etat_civil_divorce_documents_path(current_user.divorce)
   end
 
   def update_revenue
     current_user.update(revenue_params)
-    redirect_to revenus_divorce_documents_path(current_user.divorces.first)
+    redirect_to revenus_divorce_documents_path(current_user.divorce)
   end
 
   def update_charge
     current_user.update(charge_params)
-    redirect_to charges_divorce_documents_path(current_user.divorces.first)
+    redirect_to charges_divorce_documents_path(current_user.divorce)
   end
   # def create
   #   if current_user.divorces.size == 1
@@ -60,15 +64,15 @@ class DivorcesController < ApplicationController
   end
 
   def etat_civil_params
-    params.require(:user).permit(:gender, :child_nb, :status_pro, :bank_account_nb, :credit_nb, :insurance_nb, :vehicle_nb)
+    params.require(:user).permit(:first_name, :last_name, :gender, :child_nb, :mariage_contract, :contract_type)
   end
 
   def revenue_params
-    params.require(:user).permit(:statut_pro_conjoint, :property_nb, :status_pro, :bank_account_nb, :credit_nb, :insurance_nb, :vehicle_nb)
+    params.require(:user).permit(:status_pro, :statut_pro_conjoint, :property_nb, :bank_account_nb, :vehicle_nb)
   end
 
   def charge_params
-    params.require(:user).permit(:credit_nb, :insurance_nb, :vehicle_nb, :property_nb)
+    params.require(:user).permit(:credit_nb, :insurance_nb)
   end
 
 end

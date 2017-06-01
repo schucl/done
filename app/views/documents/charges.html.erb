@@ -2,8 +2,15 @@
 
 <ul>
   <li>Factures (EDF, eau, tel…) </li>
-  <li>Remboursement Credit</li>
-  <li>Taxes habitation</li>
+
+  <% if current_user.credit_nb > 0 %>
+    <% for i in 1..(current_user.credit_nb) %>
+      <li>Plan de remboursement du <%= i %>er crédit</li>
+    <% end %>
+  <% end %>
+
+
+  <li>Taxe habitation</li>
   <li>Taxe foncière</li>
   <li>Quittance Loyer</li>
   <li>Certificats scolarité</li>
@@ -11,5 +18,8 @@
   <li>Assurance vie</li>
   <li>Assurance autres</li>
 </ul>
+
+<%= link_to "Revenir au questionnaire", charge_path %>
+<%= link_to "Voir votre procédure de divorce en cours", divorce_path(current_user.divorce) %>
 
 
