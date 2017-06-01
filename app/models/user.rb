@@ -23,8 +23,6 @@ class User < ApplicationRecord
     validates :statut_pro_conjoint, presence: true
     validates :mariage_contract, presence: true
 
-end
-
 
 
 
