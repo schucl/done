@@ -24,6 +24,6 @@ class User < ApplicationRecord
     validates :mariage_contract, presence: true
 
 
-
+end
 
 
